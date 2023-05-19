@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGlobalContext } from '../contexts'
 
-const TopNavBar = () => {
+const TopNavbar = () => {
   const { userData } = useGlobalContext();
   return (
     <nav className="navbar bg_white fixed-top">
@@ -12,4 +12,4 @@ const TopNavBar = () => {
   )
 }
 
-export default TopNavBar
+export default TopNavbar
