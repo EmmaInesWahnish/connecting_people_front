@@ -1,0 +1,18 @@
+footer {
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	@include font-family('Roboto', 1rem, $grey-dark, 400);
+
+	a {
+		color: $grey-dark;
+		text-decoration: none;
+
+		&:hover {
+			color: $grey-dark;
+			text-decoration: underline;
+		}
+	}
+}

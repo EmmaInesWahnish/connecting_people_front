@@ -1,0 +1,213 @@
+.tabulator {
+	@include font-family('Roboto', 1rem, $grey-dark, 400);
+	background-color: $white;
+	border-radius: $border-radius-sm;
+	margin-bottom: 0;
+	border: none;
+	@extend .shadow-1;
+
+	.tabulator-header {
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		letter-spacing: 1.25px;
+		color: $grey-dark;
+		border-bottom-color: rgba($ga-brand-dark, 20%);
+
+		.tabulator-frozen {
+			&.tabulator-frozen {
+				border: none;
+			}
+		}
+
+		.tabulator-col {
+			padding: 0;
+			border-right: 0;
+
+			&.tabulator-sortable {
+				.tabulator-col-content {
+					.tabulator-col-sorter {
+						.tabulator-arrow {
+							color: $grey-dark;
+							border: none;
+							position: relative;
+							width: 1em;
+							height: 1em;
+							border: none;
+
+							&::before {
+								content: '\f063';
+								font-family: 'Font Awesome 6 Pro';
+								width: 1em;
+								height: 1em;
+								display: inline-block;
+								transform-origin: 50% 50%;
+								text-align: center;
+								@include transition(transform color, 0.15s, ease-in-out);
+							}
+						}
+					}
+				}
+
+				&[aria-sort='none'] {
+					.tabulator-col-content {
+						.tabulator-col-sorter {
+							.tabulator-arrow {
+								border: none;
+
+								&::before {
+									color: transparent;
+								}
+							}
+						}
+					}
+				}
+
+				&[aria-sort='asc'] {
+					.tabulator-col-content {
+						.tabulator-col-sorter {
+							.tabulator-arrow {
+								border: none;
+
+								&::before {
+									transform: rotate(180deg);
+								}
+							}
+						}
+					}
+				}
+
+				&[aria-sort='desc'] {
+					.tabulator-col-content {
+						.tabulator-col-sorter {
+							.tabulator-arrow {
+								border: none;
+
+								&::before {
+									transform: rotate(0deg);
+								}
+							}
+						}
+					}
+				}
+
+				&:hover {
+					background-color: transparent;
+
+					.tabulator-col-content {
+						.tabulator-col-sorter {
+							.tabulator-arrow {
+								&::before {
+									color: $grey-dark;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.tabulator-col-content {
+				padding: 1rem;
+				line-height: 1;
+				position: relative;
+
+				&::after {
+					content: '';
+					clear: both;
+					display: block;
+					position: absolute;
+					top: 1rem;
+					right: 0;
+					width: 1px;
+					min-height: 1em;
+					background-color: currentcolor;
+				}
+			}
+
+			&:last-child {
+				.tabulator-col-content {
+					&::after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.tabulator-tableholder {
+		overflow: auto;
+		height: calc(100% - 39px);
+		max-height: calc(100% - 39px);
+
+		.tabulator-table {
+			.tabulator-row {
+				color: $secondary-dark;
+				border-color: rgba($ga-brand-dark, 20%);
+
+				&.tabulator-row-odd {
+					background-color: $grey-light;
+
+					.tabulator-cell {
+						color: $secondary-dark;
+					}
+				}
+
+				&:hover {
+					background-color: rgba($ga-brand-dark, 20%);
+				}
+
+				.tabulator-cell {
+					padding: 0.75rem 1rem;
+					border-right: none;
+					line-height: 2rem;
+
+					&.tabulator-editing {
+						border: none;
+					}
+
+					&.tabulator-frozen {
+						&.tabulator-frozen-left {
+							border-right: 2px solid rgba($ga-brand-dark, 20%);
+						}
+
+						&.tabulator-frozen-right {
+							border-left: 2px solid rgba($ga-brand-dark, 20%);
+						}
+					}
+
+					&:has(.dropdown) {
+						overflow: visible;
+					}
+
+					.tabulator-row-handle-box {
+						width: 1rem;
+						height: 1rem;
+					}
+
+					input {
+						&[type='text'] {
+							border-color: $grey-dark;
+							border-radius: $border-radius-sm;
+							height: 3rem;
+							background-color: $white;
+
+							&:focus {
+								border-color: $secondary-violet;
+								box-shadow: 0 0 0 2px $secondary-violet;
+								color: $ga-brand-dark;
+								outline: none;
+							}
+						}
+					}
+				}
+
+				&.tabulator-selected {
+					background-color: rgba($ga-brand-dark, 20%);
+				}
+			}
+		}
+	}
+
+	.btn {
+		padding: 0.5rem;
+	}
+}

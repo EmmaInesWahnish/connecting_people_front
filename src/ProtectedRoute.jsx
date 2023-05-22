@@ -11,7 +11,7 @@ import Cookies from "js-cookie";
 const ProtectedRoute = ({ redirectPath, children }) => {
   const navigate = useNavigate();
 
-  const auth_token = Cookies.get('groovinadsConnectingPeopleToken');
+  const auth_token = Cookies.get('groovinadsConnectToken');
 
   const authorizedAccess = () => {
     if (!auth_token) {

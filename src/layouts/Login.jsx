@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 import { AuthService } from "../services";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../contexts";
@@ -12,11 +13,12 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const user = await AuthService.login({email, password});
-      localStorage.setItem("GroovinPracticaToken", user.token);
-      delete user.token;
+      const resp = await AuthService.login({email, password});
       setUserData(user);
-      // Go to HOME
+      Cookies.set('groovinadsConnectToken', resp?.data?.token, {
+        domain: myDomain,
+      });
+        // Go to HOME
       navigate("/home");
     } catch (error) {
       // Go to LOGIN

@@ -1,0 +1,11 @@
+.btn {
+	&.btn-outline {
+		.badge {
+			color: $ga-brand-dark;
+			background-color: rgba($ga-brand-dark, 20%);
+			font-size: 0.6875rem;
+			text-transform: uppercase;
+			letter-spacing: 1.25px;
+		}
+	}
+}

@@ -1,0 +1,23 @@
+.message {
+	width: 100%;
+	max-width: 90vw;
+	margin: auto;
+
+	@include respond-to($md) {
+		max-width: 474px;
+	}
+
+	h1 {
+		&::after {
+			display: none;
+		}
+	}
+}
+
+.no-reports-yet {
+	@extend .message;
+
+	@include respond-to($md) {
+		max-width: 510px;
+	}
+}

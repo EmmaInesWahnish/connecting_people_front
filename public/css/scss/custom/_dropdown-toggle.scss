@@ -1,0 +1,57 @@
+.dropdown-pills {
+	position: relative;
+
+	> .dropdown-toggle {
+		@include transition(box-shadow, 0.1s, ease-in-out);
+	}
+
+	.dropdown-label {
+		@include font-family('Roboto', 1rem, $grey-dark, 400);
+		opacity: 1;
+		transform: scale(0.85) translateY(-0.6rem) translateX(0.1rem);
+		/* background-color: #ffffff; */
+		padding: 0 0.2rem;
+		line-height: 1.2;
+		font-weight: 400;
+		position: absolute;
+		z-index: 2;
+		text-shadow: 2px 2px 1px $white, 2px -2px 1px $white, -2px 2px 1px $white,
+			-2px -2px 1px $white, 2px 0px 1px $white, 0px 2px 1px $white,
+			-2px 0px 1px $white, 0px -2px 1px $white;
+	}
+
+	&:has(> .dropdown-toggle:focus) {
+		& > .dropdown-toggle {
+			box-shadow: 0 0 0 2px $secondary-violet;
+		}
+
+		> .dropdown-label {
+			color: $secondary-violet;
+		}
+	}
+
+	.input-group {
+		.form-floating {
+			.form-search {
+				border-right: none;
+
+				&:focus {
+					& ~ label {
+						transform: scale(0.85) translateY(-0.6rem) translateX(0.3rem);
+					}
+				}
+			}
+		}
+
+		.input-group-text {
+			border-right: 1px solid $grey-dark;
+			border-left: none;
+		}
+	}
+
+	.btn {
+		&.btn-outline {
+			border-color: $grey-dark;
+		}
+	}
+}

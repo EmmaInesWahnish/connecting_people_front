@@ -1,0 +1,11 @@
+.container-fluid {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.main {
+	&.container-fluid {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}

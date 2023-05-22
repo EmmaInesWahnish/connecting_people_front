@@ -1,0 +1,117 @@
+@mixin font-family($font_family, $font_size, $font_color, $font_weight) {
+	@if $font_family == 'Baloo 2' {
+		font-family: 'Baloo 2', cursive;
+	}
+
+	@if $font_family == 'Roboto' {
+		font-family: 'Roboto', sans-serif;
+	}
+
+	@if $font_family == 'Roboto Mono' {
+		font-family: 'Roboto Mono', monospace;
+	}
+
+	font: {
+		size: $font_size;
+		weight: $font_weight;
+	}
+	color: $font_color;
+}
+
+@mixin transition($properties, $duration, $easing) {
+	$value: ();
+	@each $property in $properties {
+		@if length($value) > 0 {
+			$value: append($value, unquote(',') #{$property} $duration $easing);
+		} @else {
+			$value: append($value, #{$property} $duration $easing);
+		}
+	}
+	transition: $value;
+}
+
+$xxl: '(min-width: 1400px)';
+$xl: '(min-width: 1200px)';
+$lg: '(min-width: 992px)';
+$md: '(min-width: 768px)';
+$sm: '(min-width: 576px)';
+
+@mixin respond-to($media) {
+	@media #{$media} {
+		@content;
+	}
+}
+
+@mixin shadow($depth, $color, $direction) {
+	@if $depth == 1 {
+		@if $direction != x {
+			box-shadow: 0px 1px 1px rgba($color, 0.25),
+				0px 1px 3px 1px rgba($color, 0.2);
+		} @else {
+			box-shadow: 1px 0px 1px rgba($color, 0.25),
+				1px 0px 3px 1px rgba($color, 0.2);
+		}
+	}
+
+	@if $depth == 2 {
+		@if $direction != x {
+			box-shadow: 0 10px 20px rgba($color, 0.19), 0px 6px 6px rgba($color, 0.23);
+		} @else {
+			box-shadow: 10px 0px 20px rgba($color, 0.19),
+				6px 0px 6px rgba($color, 0.23);
+		}
+	}
+
+	@if $depth == 3 {
+		@if $direction != x {
+			box-shadow: 0px 14px 28px rgba($color, 0.25),
+				0px 10px 10px rgba($color, 0.22);
+		} @else {
+			box-shadow: 14px 0px 28px rgba($color, 0.25),
+				10px 0px 10px rgba($color, 0.22);
+		}
+	}
+
+	@if $depth == 4 {
+		@if $direction != x {
+			box-shadow: 0px 19px 38px rgba($color, 0.3),
+				0px 15px 12px rgba($color, 0.22);
+		} @else {
+			box-shadow: 19px 0px 38px rgba($color, 0.3),
+				15px 0px 12px rgba($color, 0.22);
+		}
+	}
+}
+
+@mixin scrollbars(
+	$size,
+	$foreground-color,
+	$background-color: mix($foreground-color, white, 50%)
+) {
+	// For Google Chrome
+	&::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+		border-radius: $border-radius-sm;
+		@include transition(background-color, 0.15s, ease-in-out);
+
+		&:hover {
+			background-color: mix($foreground-color, black, 75%);
+		}
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+		padding: 10px;
+	}
+
+	// For Internet Explorer
+	& {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
+}

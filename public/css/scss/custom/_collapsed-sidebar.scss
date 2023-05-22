@@ -1,0 +1,21 @@
+.collapsed-sidebar {
+	@include respond-to($lg) {
+		.sidebar {
+			left: -15rem;
+		}
+
+		.collapse-button {
+			opacity: 1;
+			transform: scale(1);
+
+			.collapse-icon {
+				transform: rotate(-180deg);
+			}
+		}
+
+		.main {
+			width: 100%;
+			margin-left: 0;
+		}
+	}
+}

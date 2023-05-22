@@ -1,0 +1,65 @@
+.modal {
+	.modal-dialog {
+		.modal-header {
+			border: none;
+
+			.btn-close {
+				background: none;
+				margin: 0;
+				padding: 0.5rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+
+		.modal-content {
+			@include shadow(4, $ga-brand-dark, y);
+			border-radius: $border-radius-md;
+
+			.modal-footer {
+				justify-content: left;
+			}
+		}
+
+		&.modal-lg {
+			.modal-body {
+				max-height: 55vh;
+				overflow-y: scroll;
+
+				@include respond-to($lg) {
+					max-height: none;
+				}
+			}
+		}
+	}
+
+	p {
+		color: $grey-dark;
+		font-size: 16px;
+	}
+
+	&.scale {
+		.modal-dialog {
+			transform: scale(0);
+			transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+		}
+
+		&:not(.show) {
+			.modal-dialog {
+				transform: scale(0);
+			}
+		}
+
+		&.show {
+			.modal-dialog {
+				transform: none;
+			}
+		}
+	}
+}
+
+.modal-bg {
+	display: block;
+	background: rgba(0, 0, 0, 0.8);
+}

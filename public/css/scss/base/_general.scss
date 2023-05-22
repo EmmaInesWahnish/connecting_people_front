@@ -1,0 +1,11 @@
+body {
+	background-color: $grey-light;
+	@include scrollbars(0.5rem, transparent, transparent);
+
+	&.modal-open {
+		overflow: auto !important;
+		&[style] {
+			padding-right: 0px !important;
+		}
+	}
+}

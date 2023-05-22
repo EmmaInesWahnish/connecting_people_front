@@ -1,0 +1,28 @@
+.header {
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	position: fixed;
+	animation: showHeader 0.2s ease-out both;
+
+	&.fixed-top {
+		background-color: $white;
+		padding-right: 0px !important;
+
+		.navbar {
+			padding-top: 0.618rem;
+			padding-bottom: 0.618rem;
+		}
+	}
+
+	& ~ .container-fluid {
+		.main {
+			padding-top: 6rem;
+
+			.heading {
+				top: 4rem;
+			}
+		}
+	}
+}

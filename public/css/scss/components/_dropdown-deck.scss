@@ -1,0 +1,106 @@
+.brand-wrapper {
+	.dropdown-menu {
+		min-width: 250px;
+		overflow-y: scroll;
+		scrollbar-width: thin;
+
+		li {
+			@include transition(color background-color, 0.15s, ease-in-out);
+			display: flex;
+			padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+			&:hover {
+				background-color: lighten($ga-brand-midtone, 50%);
+
+				.icon-app {
+					background-color: $ga-brand-midtone;
+				}
+
+				.deck-fav {
+					color: $white;
+
+					&:has(.fa-solid) {
+						color: $warning;
+					}
+				}
+			}
+
+			&:has(.dropdown-divider) {
+				display: block;
+				padding: 0;
+
+				&:hover {
+					background-color: transparent;
+				}
+			}
+
+			.dropdown-item {
+				padding: 0;
+				background-color: transparent;
+				color: $grey-dark;
+
+				.icon-app {
+					.icon {
+						color: $white;
+
+						path {
+							fill: $white;
+							@include transition(fill, 0.15s, ease-in-out);
+						}
+					}
+
+					i {
+						color: $white;
+					}
+				}
+
+				&:active,
+				&.active {
+					.icon-app {
+						background-color: $ga-brand-midtone;
+					}
+				}
+			}
+
+			.deck-fav {
+				color: $grey-light;
+				font-size: 1rem;
+				border: 0;
+				background-color: transparent;
+				transform-origin: center;
+				@include transition(color, 0.15s, ease-in-out);
+
+				.fa-solid {
+					color: $warning;
+				}
+			}
+		}
+
+		.icon-app {
+			width: 2rem;
+			height: 2rem;
+			border-radius: $border-radius-sm;
+			background-color: $secondary-blue-light;
+			margin-right: 1rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			@include transition(background-color, 0.15s, ease-in-out);
+
+			.icon {
+				width: 1rem;
+				height: 1rem;
+				margin-right: 0 !important;
+
+				path {
+					fill: $white;
+					@include transition(fill, 0.15s, ease-in-out);
+				}
+			}
+
+			i {
+				color: $white;
+			}
+		}
+	}
+}

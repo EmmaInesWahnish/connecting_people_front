@@ -1,0 +1,201 @@
+.dropdown,
+.dropup {
+	@include font-family('Roboto', 1rem, $grey-dark, 400);
+
+	.dropdown-toggle {
+		&::after {
+			display: none;
+		}
+
+		.icon {
+			width: 1rem;
+			height: 1rem;
+			margin-right: 0;
+			color: $ga-brand-midtone;
+			@include transition(transform, 0.15s, ease-out);
+			text-align: center;
+
+			path {
+				@include transition(color, 0.15s, ease-in-out);
+				fill: $ga-brand-midtone;
+			}
+
+			&.avatar {
+				margin-right: 0;
+
+				@include respond-to($md) {
+					margin-right: 1rem;
+				}
+
+				path {
+					fill: $grey-dark;
+				}
+			}
+
+			&.caret {
+				margin-left: 1rem;
+				@include transition(transform color, 0.15s, ease-in-out);
+
+				path {
+					fill: $grey-dark;
+					@include transition(fill, 0.15s, ease-in-out);
+				}
+			}
+		}
+
+		&:hover {
+			.icon {
+				path {
+					fill: $white;
+				}
+			}
+		}
+
+		&.show {
+			.icon {
+				&.avatar {
+					path {
+						fill: $ga-brand-midtone;
+					}
+				}
+
+				&.caret {
+					transform: rotate(180deg);
+
+					path {
+						fill: $ga-brand-midtone;
+					}
+				}
+			}
+
+			> span,
+			> i {
+				color: $ga-brand-midtone;
+			}
+
+			&.btn-outline {
+				> span,
+				> i {
+					color: $white;
+				}
+			}
+		}
+	}
+
+	.dropdown-label + .dropdown-toggle {
+		&.grey {
+			.icon {
+				color: $grey-dark;
+			}
+			&.show {
+				.icon,
+				span {
+					color: $ga-brand-midtone;
+				}
+			}
+			&:active {
+				.icon,
+				span {
+					color: $ga-brand-midtone;
+				}
+			}
+		}
+	}
+}
+
+.dropdown-menu {
+	overflow-y: auto;
+	border: none;
+	border-radius: $border-radius-sm;
+	@include font-family('Roboto', 1rem, $grey-dark, 400);
+
+	li {
+		position: relative;
+	}
+
+	.dropdown-header {
+		color: $grey-dark;
+		font-size: 0.75rem;
+	}
+
+	.dropdown-item {
+		color: $grey-dark;
+		@include transition(color background-color, 0.15s, ease-in-out);
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		cursor: pointer;
+
+		&:hover {
+			background-color: lighten($ga-brand-midtone, 50%);
+
+			.icon-app {
+				background-color: $ga-brand-midtone;
+			}
+		}
+
+		&.active,
+		&:active {
+			background-color: $ga-brand-light;
+			color: $white;
+
+			.icon-app {
+				background-color: $white;
+
+				.icon {
+					color: $ga-brand-light;
+
+					path {
+						fill: $ga-brand-light;
+					}
+				}
+
+				i {
+					color: $ga-brand-light;
+				}
+			}
+			i {
+				color: $white;
+			}
+		}
+
+		.icon {
+			width: 1rem;
+			height: 1rem;
+			margin-right: 0.5rem;
+			color: $ga-brand-midtone;
+
+			path {
+				fill: $ga-brand-midtone;
+			}
+		}
+	}
+
+	.dropdown-footer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+		padding-top: 1rem;
+	}
+
+	&.show {
+		animation: showMenu 300ms ease-in-out both;
+	}
+
+	&.dropdown-filters {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+
+		.dropdown-options {
+			max-height: 120px;
+			overflow-y: scroll;
+		}
+	}
+
+	@include scrollbars(0.5rem, transparent, $white);
+
+	&:hover {
+		@include scrollbars(0.5rem, #c1c1c1, $white);
+	}
+}

@@ -1,0 +1,65 @@
+.modal {
+	.modal-header {
+		align-items: flex-start;
+		justify-content: space-between;
+
+		.user {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.id {
+			flex-direction: row;
+			align-items: center;
+			display: flex;
+			gap: 0.5rem;
+			color: $grey-dark;
+
+			h3 {
+				line-height: 1.2;
+			}
+
+			h4 {
+				color: $grey-dark;
+			}
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.login-source {
+			margin-top: 1rem;
+			padding: 0.5rem;
+			border: 1px solid rgba($ga-brand-dark, 20%);
+			border-radius: $border-radius-sm;
+			font-weight: 700;
+
+			&.google {
+				span {
+					color: $google-brand;
+				}
+			}
+			&.facebook {
+				span {
+					color: $facebook-brand;
+				}
+			}
+			&.github {
+				span {
+					color: $black;
+				}
+			}
+			&.apple {
+				span {
+					color: $black;
+				}
+			}
+			&.groovinads {
+				span {
+					color: $ga-brand-dark;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+.main {
+	padding-top: 2rem;
+	padding-bottom: 3rem;
+	min-height: 100vh;
+	position: relative;
+
+	.sidebar ~ & {
+		@include respond-to($lg) {
+			width: calc(100% - 15rem);
+			margin-left: 15rem;
+			@include transition(width margin-left, 0.3s, cubic-bezier(0.2, 0, 0, 1));
+		}
+	}
+
+	.heading {
+		top: 0rem;
+		padding-top: 2rem;
+		margin-top: -2rem;
+		background-color: $grey-light;
+		z-index: 1;
+
+		@include respond-to($md) {
+			position: sticky;
+		}
+
+		.buttons-wrapper {
+			display: flex;
+			gap: 1rem;
+			justify-content: flex-start;
+
+			@include respond-to($md) {
+				justify-content: flex-end;
+			}
+		}
+	}
+}

@@ -1,0 +1,71 @@
+.table {
+	min-width: 846px;
+	tbody {
+		tr {
+			td {
+				.fa-crown {
+					margin-right: 1rem;
+					color: $warning;
+				}
+
+				&.col-1,
+				&.col-2 {
+					.btn {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+
+.table-fixed {
+	tbody {
+		height: 45vh;
+	}
+}
+
+.modal-dialog {
+	.table-responsive {
+		height: 300px;
+		overflow: hidden;
+
+		.table {
+			min-width: auto;
+			display: block;
+
+			tbody {
+				tr {
+					td {
+						font-size: 0.85rem;
+					}
+				}
+			}
+
+			&.table-fixed {
+				tbody {
+					height: calc(45vh - 50px);
+				}
+			}
+		}
+	}
+
+	&.modal-lg {
+		.table {
+			min-width: 483px;
+		}
+	}
+}
+
+#edit-group-clients-tab-pane,
+#edit-group-users-tab-pane {
+	.table-responsive {
+		height: 219px;
+	}
+
+	.btn {
+		&.btn-outline {
+			border-color: $ga-brand-midtone;
+		}
+	}
+}

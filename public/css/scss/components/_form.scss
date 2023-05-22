@@ -1,0 +1,34 @@
+form {
+	.form-group {
+		margin-bottom: 1.618em;
+		position: relative;
+	}
+
+	.form-control {
+		&:focus {
+			box-shadow: 0 0 0 0.25rem rgba($ga-brand-light, 25%);
+		}
+	}
+
+	input {
+		&.form-control {
+			height: 2.618em;
+		}
+	}
+
+	textarea {
+		&.form-control {
+			height: 11.089rem;
+			resize: none;
+		}
+	}
+
+	&.was-validated {
+		input,
+		textarea {
+			&:invalid {
+				background-color: lighten($error, 40%);
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+.spinner {
+	animation: rotator 1.4s linear infinite;
+	width: 24px;
+	height: 24px;
+
+	circle {
+		stroke-dasharray: 187;
+		stroke-dashoffset: 0;
+		stroke: $ga-brand-light;
+		transform-origin: center;
+		animation: dash 1.4s ease-in-out infinite, colors 1.4s ease-in-out infinite;
+	}
+}

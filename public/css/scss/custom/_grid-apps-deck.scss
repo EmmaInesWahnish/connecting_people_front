@@ -1,0 +1,58 @@
+.navbar {
+	.dropdown-toggle {
+		#deckApps {
+			g {
+				@include transition(
+					transform,
+					0.15s,
+					cubic-bezier(0.22, 0.68, 0, 1.71)
+				);
+				transform-origin: 50% 50%;
+				transition-delay: 0.1s;
+
+				rect {
+					fill: $ga-brand-midtone;
+					transform-origin: 50% 50%;
+					@include transition(fill transform width height, 0.15s, ease-in);
+				}
+			}
+		}
+
+		&.show {
+			#deckApps {
+				g {
+					transform: rotate(45deg);
+
+					rect {
+						width: 3.2px;
+						height: 3.2px;
+
+						&:nth-child(1) {
+							transform: translateX(5.7px);
+						}
+
+						&:nth-child(2) {
+							width: 12.8px;
+						}
+
+						&:nth-child(3) {
+							transform: translateY(-5.7px);
+						}
+
+						&:nth-child(4) {
+							height: 12.8px;
+						}
+
+						&:nth-child(7) {
+							transform: translateY(5.7px);
+						}
+
+						&:nth-child(9) {
+							transform: translateX(-5.7px);
+						}
+					}
+				}
+			}
+		}
+	}
+}

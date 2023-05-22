@@ -1,0 +1,15 @@
+.shadow-1 {
+	@include shadow(1, $ga-brand-dark, y);
+}
+
+.shadow-2 {
+	@include shadow(2, $ga-brand-dark, y);
+}
+
+.shadow-3 {
+	@include shadow(3, $ga-brand-dark, y);
+}
+
+.shadow-4 {
+	@include shadow(4, $ga-brand-dark, y);
+}

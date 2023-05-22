@@ -1,0 +1,566 @@
+.btn {
+	@include font-family('Roboto', 1rem, $white, 700);
+	line-height: 1rem;
+	background-color: $ga-brand-midtone;
+	border-color: transparent;
+	color: $white;
+	padding: 1em 1.5em;
+	@include transition(
+		color background-color box-shadow transform,
+		0.15s,
+		ease-in-out
+	);
+	box-shadow: 0px 0px 0px rgba($ga-brand-midtone, 35%);
+	transform: translateY(0);
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: center;
+	border-radius: $border-radius-sm;
+
+	@include respond-to($md) {
+		width: auto;
+	}
+
+	.icon {
+		width: 1em;
+		height: 1em;
+
+		path {
+			fill: $white;
+		}
+
+		& + span {
+			margin-left: 0.5rem;
+		}
+	}
+
+	span {
+		white-space: nowrap;
+		& + .icon {
+			margin-left: 0.5rem;
+		}
+	}
+
+	i {
+		& + span {
+			margin-left: 0.5rem;
+		}
+	}
+
+	&:hover {
+		background-color: $ga-brand-midtone;
+		border-color: $ga-brand-midtone;
+		box-shadow: 0px 6px 16px rgba($ga-brand-midtone, 35%);
+		transform: translateY(-0.146rem);
+		color: $white;
+
+		.icon {
+			path {
+				animation: toRight 0.25s ease-in-out forwards;
+			}
+		}
+	}
+
+	&:active {
+		background-color: $ga-brand-midtone;
+		border-color: $ga-brand-midtone;
+		color: $white;
+	}
+
+	&:first-child {
+		&:active {
+			background-color: $ga-brand-midtone;
+			border-color: $ga-brand-midtone;
+			color: $white;
+		}
+	}
+
+	&.store {
+		margin-bottom: 1rem;
+		background-color: transparent;
+		color: inherit;
+		border-color: $grey-light;
+	}
+
+	&.btn-secondary {
+		background-color: lighten($ga-brand-midtone, 50%);
+		border-color: lighten($ga-brand-midtone, 50%);
+		color: $ga-brand-midtone;
+		@include transition(
+			background-color border-color color,
+			0.15s,
+			ease-in-out
+		);
+
+		&:hover {
+			transform: translate(0);
+			box-shadow: none;
+			border-color: $ga-brand-midtone;
+			background-color: $ga-brand-midtone;
+			color: $white;
+		}
+	}
+
+	&.btn-terciary {
+		background-color: transparent;
+		border-color: transparent;
+		color: $ga-brand-midtone;
+		@include transition(background-color border-color, 0.15s, ease-in-out);
+
+		&:hover,
+		&:active,
+		&.show {
+			transform: translate(0);
+			box-shadow: none;
+			border-color: rgba($ga-brand-dark, 5%);
+			background-color: rgba($ga-brand-dark, 10%);
+
+			color: $ga-brand-midtone;
+
+			span {
+				color: $ga-brand-midtone;
+			}
+
+			.icon {
+				path {
+					fill: $ga-brand-midtone;
+				}
+			}
+		}
+
+		&.danger {
+			color: $error;
+
+			span {
+				color: $error;
+			}
+
+			img {
+				width: 16px;
+				height: 16px;
+			}
+
+			&:hover,
+			&:active {
+				color: $error;
+				border-color: lighten($error, 40%);
+				background-color: lighten($error, 40%);
+
+				span {
+					color: $error;
+				}
+			}
+		}
+	}
+
+	&.btn-outline {
+		background-color: transparent;
+		border: 1px solid $ga-brand-midtone;
+		color: $ga-brand-midtone;
+		@include transition(
+			background-color border-color color,
+			0.15s,
+			ease-in-out
+		);
+
+		span,
+		i {
+			color: $ga-brand-midtone;
+			@include transition(color transform, 0.15s, ease-in-out);
+		}
+
+		&:hover {
+			transform: translate(0);
+			box-shadow: none;
+			border-color: $ga-brand-midtone;
+			background-color: $ga-brand-midtone;
+			color: $white;
+
+			span,
+			i {
+				color: white;
+			}
+		}
+
+		&:active,
+		&.show {
+			border-color: $ga-brand-midtone;
+			background-color: $ga-brand-midtone;
+			color: $white;
+
+			span,
+			i {
+				color: white;
+			}
+		}
+
+		&.grey {
+			border-color: $grey-dark;
+
+			span,
+			i,
+			.icon {
+				color: $grey-dark;
+			}
+
+			&:hover {
+				color: $white;
+				border-color: $ga-brand-midtone;
+
+				span,
+				i {
+					color: white;
+				}
+			}
+
+			&.show {
+				span,
+				i {
+					color: white;
+				}
+			}
+
+			&:active {
+				color: $white;
+				border-color: $ga-brand-midtone;
+
+				span,
+				.icon {
+					color: $white;
+				}
+			}
+		}
+	}
+
+	&.transparent {
+		background: transparent;
+		border-color: transparent;
+		font-weight: 400;
+		padding: 0;
+
+		&:hover {
+			background: transparent;
+			transform: none;
+			box-shadow: none;
+		}
+
+		&.danger {
+			color: $error;
+
+			.icon {
+				path {
+					fill: $error;
+				}
+			}
+		}
+
+		&:focus {
+			background: transparent;
+			border-color: transparent;
+		}
+	}
+
+	&.btn-loading {
+		background-color: lighten($ga-brand-midtone, 25%);
+		position: relative;
+		overflow: hidden;
+		pointer-events: none;
+		@include transition(background-color, 0.2s, ease-out);
+
+		&::after {
+			content: '';
+			height: 100%;
+			background-color: $ga-brand-midtone;
+			width: 100%;
+			position: absolute;
+			z-index: 0;
+			top: 0;
+			left: 0;
+			transform-origin: 0;
+			animation: processing 3s cubic-bezier(0.765, 0.075, 0.81, 0.02) forwards;
+		}
+
+		span {
+			z-index: 1;
+		}
+
+		&.btn-loading-ok {
+			&::after {
+				animation: processOk 1s cubic-bezier(0.765, 0.075, 0.81, 0.02) forwards;
+			}
+		}
+
+		&.btn-loading-error {
+			&::after {
+				animation: processError 1s cubic-bezier(0.765, 0.075, 0.81, 0.02)
+					forwards;
+			}
+		}
+	}
+
+	&.btn-image {
+		padding: 0.375em 1.5em 0.375em 0.375em;
+		align-items: center;
+
+		.avatar {
+			margin-right: 0.5rem;
+			border-radius: 100%;
+			overflow: hidden;
+
+			img {
+				width: 2.375em;
+				height: 2.375em;
+			}
+		}
+	}
+
+	&.oauth {
+		width: 100%;
+		justify-content: flex-start;
+		align-items: center;
+		margin-bottom: 1rem;
+
+		&.google {
+			background-color: $white;
+			border: 1px solid $grey-light;
+
+			span {
+				color: $grey-dark;
+			}
+		}
+
+		&.facebook {
+			background-color: $facebook-brand;
+			border: 1px solid $facebook-brand;
+
+			span {
+				color: $white;
+			}
+		}
+
+		&.microsoft {
+			background-color: $white;
+			border: 1px solid $microsoft-border;
+
+			span {
+				color: $microsoft-font;
+			}
+		}
+
+		&.apple {
+			background-color: $black;
+			border: 1px solid $black;
+
+			span {
+				color: $white;
+			}
+		}
+
+		.logo {
+			width: 1.5rem;
+			height: 1.5rem;
+			margin-right: 1rem;
+		}
+	}
+
+	&.btn-small {
+		font-size: 0.875rem;
+		line-height: 1em;
+		padding: 0.75em 1.375em;
+	}
+
+	&.btn-large {
+		font-size: 1.25rem;
+		line-height: 1em;
+		padding: 1.25em 2.25em;
+	}
+
+	&.btn-floating {
+		padding: 1.25rem;
+		border-radius: 100%;
+		line-height: 1.5rem;
+		box-shadow: 0 10px 20px rgba($ga-brand-dark, 0.19),
+			0 6px 6px rgba($ga-brand-dark, 0.23);
+		position: fixed;
+		right: 2rem;
+		bottom: 2rem;
+		width: auto;
+
+		span {
+			font-size: 1.5rem;
+			line-height: 1em;
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+
+		&:hover {
+			box-shadow: 0 19px 38px rgba($ga-brand-dark, 0.3),
+				0 15px 12px rgba($ga-brand-dark, 0.22);
+		}
+	}
+
+	&.btn-input {
+		background-color: $white;
+		border: 1px solid $grey-dark;
+		color: $grey-dark;
+		font-weight: 400;
+
+		&:hover,
+		&:active {
+			transform: translate(0);
+			box-shadow: none;
+			background-color: $white;
+			color: $grey-dark;
+		}
+
+		.highlighted {
+			font-weight: 700;
+			color: $secondary-dark;
+		}
+	}
+
+	&.btn-pill {
+		width: 1rem;
+		height: 1rem;
+		padding: 0;
+		background-color: transparent;
+		color: $ga-brand-dark;
+
+		&:focus {
+			box-shadow: 0 0 0 0.25rem rgba($ga-brand-dark, 0.25);
+		}
+
+		&:hover {
+			transform: none;
+			box-shadow: none;
+			border-color: transparent;
+		}
+
+		&.dropdown-toggle {
+			.caret {
+				color: $ga-brand-dark;
+				@include transition(transform, 0.15s, ease-out);
+			}
+
+			&.show {
+				span {
+					color: $ga-brand-dark;
+				}
+
+				.caret {
+					transform: rotate(180deg);
+				}
+			}
+		}
+	}
+
+	&.btn-export-processing {
+		border-color: rgba($ga-brand-dark, 5%);
+		background-color: rgba($ga-brand-dark, 10%);
+		pointer-events: none;
+
+		color: $ga-brand-midtone;
+
+		span {
+			color: $ga-brand-midtone;
+		}
+
+		.icon {
+			path {
+				fill: $ga-brand-midtone;
+			}
+		}
+
+		.fa-spin {
+			animation-duration: 0.75s;
+		}
+	}
+}
+
+:not(.btn-check) {
+	& + .btn {
+		&:active {
+			background-color: $ga-brand-midtone;
+			border-color: $ga-brand-midtone;
+			color: $white;
+		}
+
+		&.btn-terciary {
+			&:active {
+				border-color: transparent;
+				background-color: transparent;
+				color: $ga-brand-midtone;
+			}
+		}
+
+		&.btn-input {
+			transform: translate(0);
+			box-shadow: none;
+			background-color: $white;
+			color: $grey-dark;
+		}
+
+		&.btn-pill {
+			&:active {
+				background-color: transparent;
+				color: $ga-brand-dark;
+				border-color: transparent;
+			}
+		}
+	}
+}
+
+.table {
+	.btn {
+		white-space: nowrap;
+
+		&.btn-small {
+			&.dropdown-toggle {
+				max-width: 150px;
+				padding: 0.5rem 0.75rem;
+
+				span {
+					font-size: 0.75rem;
+					line-height: 0.875rem;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
+
+				i {
+					font-size: 0.75rem;
+					width: 0.75rem;
+					height: 0.75rem;
+					line-height: 0.75rem;
+				}
+			}
+		}
+
+		&.transparent {
+			padding: 0.5rem 0.75rem;
+			@include transition(background-color color, 0.15s, ease-in-out);
+
+			span,
+			i {
+				color: $grey-dark;
+			}
+
+			&:hover {
+				background-color: rgba($grey-dark, 0.2);
+				span,
+				i {
+					color: $ga-brand-midtone;
+				}
+			}
+
+			&.show {
+				background-color: rgba($grey-dark, 0.2);
+				span,
+				i {
+					color: $ga-brand-midtone;
+				}
+			}
+		}
+	}
+}

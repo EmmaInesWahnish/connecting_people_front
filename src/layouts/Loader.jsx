@@ -7,38 +7,21 @@ import Cookies from "js-cookie";
 import { useGlobalContext } from "../contexts";
 
 const Loader = () => {
-
-  const { setUserData } = useGlobalContext();
-
-  const token = localStorage.getItem("GroovinPracticaToken");
-
-  console.log("auth_token >>>> ", token);
+  const { userData } = useGlobalContext();
 
   const navigate = useNavigate();
 
-  const checkToken = async () => {
-    if (!token) {
+  const checkUserData = async () => {
+    if (Object.entries(userData).length === 0) {
       // Go to LOGIN
       navigate("/authenticate");
     } else {
-      // Check if token is valid
-      // If valid, go to HOME
-      // If not valid, go to LOGIN
-      try {
-        const user = await AuthService.login({token});
-        delete user.token;
-        setUserData(user);
-        // Go to HOME
-        navigate("/home");
-      } catch (error) {
-        // Go to LOGIN
-        navigate("/authenticate");
-      }
+      navigate("/home");
     }
   };
 
   useEffect(() => {
-    checkToken();
+    checkUserData();
   }, []);
 
   return <div>Loading...</div>;

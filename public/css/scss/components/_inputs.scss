@@ -1,0 +1,198 @@
+.form-floating {
+	.form-control {
+		border-color: $grey-dark;
+		color: $grey-dark;
+		border-radius: 0.375rem;
+		height: 3rem;
+
+		&:focus,
+		.focus {
+			border-color: $secondary-violet;
+			box-shadow: 0 0 0 2px $secondary-violet;
+			padding-top: 0.625rem;
+			color: $ga-brand-dark;
+
+			& ~ label {
+				color: $secondary-violet;
+				opacity: 1;
+				transform: scale(0.85) translateY(-0.6rem) translateX(0.3rem);
+				padding: 0 0.2rem;
+				height: 20px;
+				line-height: 1.2;
+				text-shadow: 2px 2px 1px $white, 2px -2px 1px $white,
+					-2px 2px 1px $white, -2px -2px 1px $white, 2px 0px 1px $white,
+					0px 2px 1px $white, -2px 0px 1px $white, 0px -2px 1px $white;
+			}
+
+			&:not(:placeholder-shown) {
+				& ~ label {
+					color: $secondary-violet;
+				}
+			}
+		}
+
+		&:not(:placeholder-shown) {
+			padding-top: 0.625rem;
+
+			& ~ label {
+				color: $grey-dark;
+				opacity: 1;
+				transform: scale(0.85) translateY(-0.6rem) translateX(0.3rem);
+				padding: 0 0.2rem;
+				height: 20px;
+				line-height: 1.2;
+				text-shadow: 2px 2px 2px $white, 2px -2px 1px $white,
+					-2px 2px 1px $white, -2px -2px 1px $white, 2px 0px 1px $white,
+					0px 2px 1px $white, -2px 0px 1px $white, 0px -2px 1px $white;
+			}
+		}
+
+		&:disabled {
+			background-color: $white;
+			color: rgba($grey-dark, 0.5);
+			pointer-events: none;
+		}
+
+		&.not-validated {
+			border-color: $error;
+			padding-right: calc(1.5em + 0.75rem);
+			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+			background-repeat: no-repeat;
+			background-position: right calc(0.375em + 0.1875rem) center;
+			background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+			background-color: lighten($error, 40%);
+			border-top-right-radius: 0;
+
+			&:focus {
+				border-color: $error;
+				box-shadow: 0 0 0 0.25rem rgba($error, 0.25);
+
+				& ~ label {
+					color: $error;
+				}
+			}
+
+			& ~ label {
+				color: $error;
+			}
+		}
+	}
+
+	textarea {
+		&.form-control {
+			resize: none;
+			height: 6rem;
+		}
+	}
+
+	label {
+		background-color: transparent;
+		@include transition(opacity transform color, 0.1s, ease-in-out);
+		@include font-family('Roboto', 1rem, $grey-dark, 400);
+		width: auto;
+		max-width: 100%;
+		border-radius: 0.2rem;
+		padding: 0.75rem 0.5rem;
+		line-height: 1.5;
+	}
+
+	&.form-floating-sm {
+		.form-control {
+			height: calc(2.5rem + 2px);
+			padding: 0.5rem;
+
+			&:focus,
+			.focus {
+				& ~ label {
+					transform: scale(0.85) translateY(-0.6rem) translateX(0.3rem);
+					height: 20px;
+				}
+			}
+
+			&:not(:placeholder-shown) {
+				& ~ label {
+					transform: scale(0.85) translateY(-0.6rem) translateX(0.3rem);
+					height: 20px;
+				}
+			}
+		}
+
+		label {
+			padding: 0.5rem;
+		}
+	}
+
+	.invalid-feedback {
+		position: absolute;
+		background-color: $error;
+		color: $white;
+		padding: 2px 8px;
+		font-size: 0.618rem;
+		bottom: 100%;
+		right: 0;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		animation: toUp 0.2s ease-out both;
+		width: auto;
+		display: block;
+	}
+
+	.form-search {
+		border-right: none;
+	}
+}
+
+.input-group {
+	border-radius: $border-radius-sm;
+	@include transition(box-shadow, 0.1s, ease-in-out);
+
+	.input-group-text {
+		border-color: $grey-dark;
+		color: $grey-dark;
+		background-color: $white;
+		@include transition(opacity transform color, 0.1s, ease-in-out);
+	}
+
+	.form-floating {
+		&:not(:first-child) {
+			.form-control {
+				border-left: none;
+			}
+		}
+	}
+
+	&:has(.form-control:focus) {
+		box-shadow: 0 0 0 2px $secondary-violet;
+
+		.input-group-text {
+			border-color: $secondary-violet;
+			color: $secondary-violet;
+		}
+
+		.form-floating {
+			.form-control {
+				box-shadow: none;
+
+				& ~ label {
+					transform: scale(0.85) translateY(-0.6rem) translateX(-12%);
+				}
+			}
+
+			&.form-floating-sm {
+				.form-control {
+					& ~ label {
+						transform: scale(0.85) translateY(-0.6rem) translate(0.3rem);
+					}
+				}
+			}
+		}
+	}
+
+	.form-control {
+		&:not(:placeholder-shown) {
+			& ~ label {
+				transform: scale(0.85) translateY(-0.6rem) translateX(-12%);
+			}
+		}
+	}
+}

@@ -1,0 +1,245 @@
+.navbar {
+	justify-content: flex-start;
+	height: 4rem;
+
+	.brand {
+		width: 100%;
+		max-width: $logo-width;
+		height: 100%;
+		vertical-align: middle;
+
+		.ga-logo {
+			width: 100%;
+			max-width: $logo-width;
+			height: auto;
+			pointer-events: none;
+		}
+	}
+
+	.nav {
+		gap: 30px;
+		flex-direction: row;
+
+		.nav-link {
+			@include font-family('Roboto', 16px, $grey-dark, 400);
+			@include transition(color, 0.15s, ease-in-out);
+			text-align: center;
+
+			&::after {
+				content: '';
+				position: relative;
+				width: 100%;
+				display: block;
+				height: 3px;
+				background-color: $ga-brand-light;
+				border-radius: $border-radius-sm;
+				left: 0;
+				bottom: -0.5rem;
+				@include transition(transform, 0.15s, ease-out);
+				transform: scaleX(0);
+				transform-origin: 50%;
+			}
+
+			&:hover {
+				color: $ga-brand-light;
+
+				&::after {
+					transform: scaleX(100%);
+				}
+			}
+		}
+
+		.btn {
+			font-size: 16px;
+			display: block;
+			padding: 1rem;
+			margin-right: 0;
+
+			.icon {
+				margin: 0;
+				path {
+					fill: $grey-dark;
+				}
+				color: $grey-dark;
+			}
+
+			@include respond-to($md) {
+				display: inline-block;
+			}
+
+			&:hover {
+				color: $white;
+			}
+		}
+	}
+
+	.navbar-collapse {
+		justify-content: flex-end;
+		background-color: rgba($white, 0.85);
+		backdrop-filter: blur(12px);
+		margin-top: 1rem;
+		border-radius: $border-radius-md;
+		box-shadow: 0px 4px 55px rgba($ga-brand-midtone, 0.2);
+
+		@include respond-to($md) {
+			background-color: transparent;
+			backdrop-filter: none;
+			padding: 0;
+			margin-top: 0;
+			box-shadow: none;
+		}
+
+		.nav-pills {
+			margin: 1.618rem;
+
+			@include respond-to($md) {
+				margin: 0;
+			}
+		}
+	}
+
+	.navbar-toggler {
+		padding: 0.5rem 1rem;
+		left: 12px;
+
+		#nav-icon {
+			width: 14px;
+			height: 16px;
+			position: relative;
+			transform: rotate(0deg);
+			cursor: pointer;
+			@include transition(transform, 0.15s, ease-in);
+
+			span {
+				display: block;
+				position: absolute;
+				height: 3px;
+				width: 100%;
+				background: $ga-brand-midtone;
+				border-radius: 100px;
+				opacity: 1;
+				left: 0;
+				@include transition(transform, 0.15s, ease-in);
+
+				&:nth-child(1) {
+					top: 0;
+				}
+
+				&:nth-child(2) {
+					top: 6px;
+				}
+
+				&:nth-child(3) {
+					top: 12px;
+				}
+			}
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 0.25rem rgba($ga-brand-dark, 0.5);
+		}
+
+		&:not(.collapsed) {
+			border-color: lighten($ga-brand-midtone, 50%);
+			background-color: lighten($ga-brand-midtone, 50%);
+
+			#nav-icon {
+				transition-duration: 0.15s;
+				transform: rotateZ(180deg);
+
+				span {
+					&:nth-child(1) {
+						transform: rotateZ(45deg) scaleX(0.75) translate(8px, -2px);
+					}
+
+					&:nth-child(3) {
+						transform: rotateZ(-45deg) scaleX(0.75) translate(8px, 2px);
+					}
+				}
+			}
+		}
+	}
+
+	.btn {
+		&.btn-terciary {
+			span {
+				color: $grey-dark;
+			}
+		}
+	}
+
+	.dropdown-toggle,
+	.navbar-toggler {
+		padding: 1rem;
+		width: auto;
+
+		&::after {
+			display: none;
+		}
+
+		.icon {
+			path {
+				fill: $ga-brand-midtone;
+			}
+		}
+
+		&.user {
+			padding: 0.375em;
+			span {
+				display: none;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				max-width: 144px;
+				margin: 0;
+				@include transition(color, 0.15s, ease-in-out);
+
+				@include respond-to($md) {
+					display: block;
+				}
+			}
+
+			.caret {
+				color: $grey-dark;
+				@include transition(color transform, 0.15s, ease-in-out);
+				margin: 0;
+
+				@include respond-to($md) {
+					margin-left: 1rem;
+				}
+			}
+
+			.avatar {
+				box-shadow: none;
+				@include transition(box-shadow, 0.15s, ease-in-out);
+			}
+
+			&.show {
+				.avatar {
+					box-shadow: 0 0 0 3px $ga-brand-midtone;
+				}
+			}
+		}
+
+		&.show {
+			border-color: lighten($ga-brand-midtone, 50%);
+			background-color: lighten($ga-brand-midtone, 50%);
+
+			&:focus {
+				box-shadow: 0 0 0 0.25rem rgba($ga-brand-dark, 0.5);
+			}
+
+			span,
+			.caret {
+				color: $ga-brand-midtone;
+			}
+		}
+	}
+
+	.brand-wrapper {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+		align-items: center;
+	}
+}

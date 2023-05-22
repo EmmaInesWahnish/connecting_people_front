@@ -1,0 +1,13 @@
+.login-source {
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	justify-content: center;
+	gap: 1rem;
+	align-items: center;
+
+	.logo {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+}
