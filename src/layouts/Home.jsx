@@ -8,7 +8,7 @@ import { useGlobalContext } from '../contexts';
 import { TopNavbar, Sidebar } from '../components';
 
 // PAGES
-import { Products } from '../pages';
+import { Dashboard } from '../pages';
 
 
 function Home() {
@@ -26,11 +26,11 @@ function Home() {
   return (
     <>
 
-      <Menu />
+      <TopNavbar />
 
       <div className="row m-0">
         <Sidebar />
-        <Products />
+        <Dashboard />
       </div>
 
     </>
