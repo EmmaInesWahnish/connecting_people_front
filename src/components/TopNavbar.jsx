@@ -6,7 +6,7 @@ const TopNavbar = () => {
   return (
     <nav className="navbar bg_white fixed-top">
       <div className="container-fluid">
-        <a className="navbar-brand">{userData.fullName}</a>
+        <a className="navbar-brand">{userData.name}</a>
       </div>
     </nav>
   );

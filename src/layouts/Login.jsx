@@ -10,12 +10,21 @@ const Login = () => {
   const { setUserData } = useGlobalContext();
 
   const navigate = useNavigate();
+  
+	const isLocalEnv = process.env.NODE_ENV === 'development';
+	let myDomain;
+	if (isLocalEnv) {
+		myDomain = 'localhost';
+	} else {
+		myDomain = '.groovinads.com';
+	}
 
   const handleLogin = async () => {
     try {
       const resp = await AuthService.login({email, password});
-      setUserData(user);
-      Cookies.set('groovinadsConnectToken', resp?.data?.token, {
+      console.log("Authenticated ",resp)
+      setUserData(resp?.payload);
+      Cookies.set('groovinadsConnectToken', resp?.data, {
         domain: myDomain,
       });
         // Go to HOME
